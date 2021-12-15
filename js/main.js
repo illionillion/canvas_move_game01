@@ -19,6 +19,14 @@ window.onload=function(){
     document.getElementById("up_btn").onmouseup=function(){buttoncheckOff(this)};
     document.getElementById("down_btn").onmousedown=function(){buttoncheckOn(this)};
     document.getElementById("down_btn").onmouseup=function(){buttoncheckOff(this)};
+    document.getElementById("left_btn").onpointerdown=function(){buttoncheckOn(this)};
+    document.getElementById("left_btn").onpointerleave=function(){buttoncheckOff(this)};
+    document.getElementById("right_btn").onpointerdown=function(){buttoncheckOn(this)};
+    document.getElementById("right_btn").onpointerleave=function(){buttoncheckOff(this)};
+    document.getElementById("up_btn").onpointerdown=function(){buttoncheckOn(this)};
+    document.getElementById("up_btn").onpointerleave=function(){buttoncheckOff(this)};
+    document.getElementById("down_btn").onpointerdown=function(){buttoncheckOn(this)};
+    document.getElementById("down_btn").onpointerleave=function(){buttoncheckOff(this)};
 
     cnvs=document.getElementById("cnv");
     const ctx=cnvs.getContext("2d");
