@@ -8,6 +8,7 @@ let flagY=true;
 
 let buttoncheck;
 let keycheck;
+let atari;
 
 window.onload=function(){
 
@@ -47,6 +48,16 @@ window.onload=function(){
         move(buttoncheck);
         keymove(keycheck);
         ctx.fillRect(data["x"],data["y"],20,20)
+        console.log(data);
+        console.log(countX+":"+countY);
+        // if ((countX>=data["x"]-20&&countY>=data["y"]-20)&&(countX<=data["x"]&&countY<=data["y"])) {
+        //     if (atari) {
+        //         alert("good");
+        //         atari=false;   
+        //     }
+        // }else{
+        //     atari=true;
+        // }
     
     }, 10);
 
@@ -95,7 +106,7 @@ function move(ele){
     if (!ele) {
         return;
     }
-    console.log(data);
+    // console.log(data);
     switch (ele.dataset.value) {
         case "left":
             console.log(data["x"]-10);
