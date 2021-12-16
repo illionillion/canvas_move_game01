@@ -85,13 +85,24 @@ window.document.addEventListener('keydown', event => {
 window.document.addEventListener('keyup', event => {
         typekeyup(event);
 });
-
+/**
+ * キーが押されたとき
+ * @param {*} ev キーボード 
+ */
 function typekeydown(ev) {
     keycheck=ev.key;
 }
+/**
+ * キーが離されたとき
+ * @param {*} ev キーボード 
+ */
 function typekeyup(ev) {
     keycheck="";
 }
+/**
+ * キーボードでプレイヤーを動かす処理
+ * @param {*} ev 押されてるキー
+ */
 function keymove(ev) {
     switch (ev) {
         case "ArrowUp":
@@ -111,13 +122,25 @@ function keymove(ev) {
             break;
     }
 }
-
+/**
+ * ボタンが押されたとき
+ * @param {*} val HTML要素 
+ */
 function buttoncheckOn(val) {
     buttoncheck=val;
 }
+/**
+ * ボタンが離されたとき
+ * @param {*} val HTML要素 
+ */
 function buttoncheckOff(val) {
     buttoncheck="";
 }
+/**
+ * プレイヤーを動かす
+ * @param {*} ele HTML要素
+ * @returns なし
+ */
 function move(ele){
     // console.log(ele);
     if (!ele) {
@@ -158,6 +181,9 @@ function move(ele){
     }
 }
 
+/**
+ * 敵を動かす
+ */
 function enemymove() {
 
     if (countX>=cnvs.width-20) {
