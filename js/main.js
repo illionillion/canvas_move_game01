@@ -12,7 +12,8 @@ let keycheck;
 // let buttoncheckY;
 // let keycheckX;
 // let keycheckY;
-let atari;
+let hitcheck;
+let hitcount=0;
 
 window.onload=function(){
 
@@ -52,16 +53,28 @@ window.onload=function(){
         move(buttoncheck);
         keymove(keycheck);
         ctx.fillRect(data["x"],data["y"],20,20)
-        // console.log(data);
-        // console.log(countX+":"+countY);
-        // if ((countX>=data["x"]-20&&countY>=data["y"]-20)&&(countX<=data["x"]&&countY<=data["y"])) {
-        //     if (atari) {
-        //         alert("good");
-        //         atari=false;   
-        //     }
-        // }else{
-        //     atari=true;
-        // }
+        const myTop    = data["y"];
+        const myBottom = data["y"] + 20;
+        const myLeft   = data["x"];
+        const myRight  = data["x"] + 20;
+      
+        const targetTop    = countY;
+        const targetBottom = countY + 20;
+        const targetLeft   = countX;
+        const targetRight  = countX + 20;
+      
+        if ((myTop < targetBottom && targetTop < myBottom) && (myLeft < targetRight && targetLeft < myRight)) {
+            if (hitcheck) {
+                // alert("good");
+                // console.log("hit");
+                hitcount++;
+                document.getElementById("countarea").innerHTML=hitcount;
+                // console.log(hitcount);
+                hitcheck=false;
+            }
+        }else{
+            hitcheck=true;
+        }
     
     }, 10);
 

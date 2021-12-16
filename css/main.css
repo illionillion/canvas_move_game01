@@ -3,6 +3,7 @@
 #frame{
     /* width: 300px; */
     /* height: 600px; */
+    width: 55%;
     margin: auto;
     text-align: center;
 }
@@ -13,10 +14,29 @@
     /* height: 400px; */
     margin: auto;
 }
+
 #controller{
-    text-align: center;
+    display: flex;
 }
-#controller input{
+
+#countarea{
+    /* float: left; */
+    text-align: center;
+    flex: 1;
+    font-size: 1.2rem;
+}
+
+#countarea::before{
+    content: "ヒット数：";
+}
+
+#buttons{
+    /* float: right; */
+    text-align: center;
+    flex: 1;
+}
+
+#buttons input{
     width: 40px;
     height:40px;
     margin: 10px;
