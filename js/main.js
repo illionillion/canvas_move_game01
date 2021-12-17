@@ -143,7 +143,8 @@ function buttoncheckOn(val) {
  * @param {*} val HTML要素 
  */
 function buttoncheckOff(val) {
-    buttoncheck="";
+    buttoncheckX="";
+    buttoncheckY="";
 }
 /**
  * プレイヤーを動かす
