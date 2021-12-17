@@ -6,10 +6,8 @@ let countY=0;
 let flagX=true;
 let flagY=true;
 
-let buttoncheck;
-let keycheck;
-// let buttoncheckX;
-// let buttoncheckY;
+let buttoncheckX;
+let buttoncheckY;
 let keycheckX;
 let keycheckY;
 let hitcheck;
@@ -50,9 +48,10 @@ window.onload=function(){
         ctx.fillRect(countX,countY,20,20)
         enemymove();
         ctx.fillStyle="black";
-        move(buttoncheck);
-        keymoveX(keycheckX);
-        keymoveY(keycheckY);
+        move(buttoncheckX);
+        move(buttoncheckY);
+        keymove(keycheckX);
+        keymove(keycheckY);
         ctx.fillRect(data["x"],data["y"],20,20)
         const myTop    = data["y"];
         const myBottom = data["y"] + 20;
@@ -102,15 +101,14 @@ function typekeydown(ev) {
  * @param {*} ev キーボード 
  */
 function typekeyup(ev) {
-    keycheck="";
     keycheckX="";
     keycheckY="";
 }
 /**
- * キーボードでプレイヤーを動かす処理X
+ * キーボードでプレイヤーを動かす処理
  * @param {*} ev 押されてるキー
  */
-function keymoveX(ev) {
+function keymove(ev) {
     switch (ev) {
         case "ArrowLeft":
             move(document.getElementById("left_btn"));
@@ -118,24 +116,13 @@ function keymoveX(ev) {
         case "ArrowRight":
             move(document.getElementById("right_btn"));
             break;
-    
-        default:
-            break;
-    }
-}
-/**
- * キーボードでプレイヤーを動かす処理Y
- * @param {*} ev 押されてるキー
- */
-function keymoveY(ev) {
-    switch (ev) {
         case "ArrowUp":
             move(document.getElementById("up_btn"));
             break;
         case "ArrowDown":
             move(document.getElementById("down_btn"));
             break;
-    
+
         default:
             break;
     }
@@ -145,7 +132,11 @@ function keymoveY(ev) {
  * @param {*} val HTML要素 
  */
 function buttoncheckOn(val) {
-    buttoncheck=val;
+    if (val.dataset.value=="ArrowLeft"||val.dataset.value=="ArrowRight") {
+        buttoncheckX=val;
+    }else{
+        buttoncheckY=val;
+    }
 }
 /**
  * ボタンが離されたとき
