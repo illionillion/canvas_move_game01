@@ -132,6 +132,9 @@ function keymove(ev) {
  * @param {*} val HTML要素 
  */
 function buttoncheckOn(val) {
+    document.getElementById("buttons").ontouchstart=function(e){
+        alert(e.touches.length);
+    }
     if (val.dataset.value=="ArrowLeft"||val.dataset.value=="ArrowRight") {
         buttoncheckX=val;
     }else{
