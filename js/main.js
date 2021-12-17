@@ -10,8 +10,8 @@ let buttoncheck;
 let keycheck;
 // let buttoncheckX;
 // let buttoncheckY;
-// let keycheckX;
-// let keycheckY;
+let keycheckX;
+let keycheckY;
 let hitcheck;
 let hitcount=0;
 
@@ -51,7 +51,8 @@ window.onload=function(){
         enemymove();
         ctx.fillStyle="black";
         move(buttoncheck);
-        keymove(keycheck);
+        keymoveX(keycheckX);
+        keymoveY(keycheckY);
         ctx.fillRect(data["x"],data["y"],20,20)
         const myTop    = data["y"];
         const myBottom = data["y"] + 20;
@@ -90,7 +91,11 @@ window.document.addEventListener('keyup', event => {
  * @param {*} ev キーボード 
  */
 function typekeydown(ev) {
-    keycheck=ev.key;
+    if (ev.key=="ArrowLeft"||ev.key=="ArrowRight") {
+        keycheckX=ev.key;
+    } else {
+        keycheckY=ev.key;
+    }
 }
 /**
  * キーが離されたとき
@@ -98,24 +103,37 @@ function typekeydown(ev) {
  */
 function typekeyup(ev) {
     keycheck="";
+    keycheckX="";
+    keycheckY="";
 }
 /**
- * キーボードでプレイヤーを動かす処理
+ * キーボードでプレイヤーを動かす処理X
  * @param {*} ev 押されてるキー
  */
-function keymove(ev) {
+function keymoveX(ev) {
+    switch (ev) {
+        case "ArrowLeft":
+            move(document.getElementById("left_btn"));
+            break;
+        case "ArrowRight":
+            move(document.getElementById("right_btn"));
+            break;
+    
+        default:
+            break;
+    }
+}
+/**
+ * キーボードでプレイヤーを動かす処理Y
+ * @param {*} ev 押されてるキー
+ */
+function keymoveY(ev) {
     switch (ev) {
         case "ArrowUp":
             move(document.getElementById("up_btn"));
             break;
         case "ArrowDown":
             move(document.getElementById("down_btn"));
-            break;
-        case "ArrowLeft":
-            move(document.getElementById("left_btn"));
-            break;
-        case "ArrowRight":
-            move(document.getElementById("right_btn"));
             break;
     
         default:
