@@ -133,7 +133,8 @@ function keymove(ev) {
  */
 function buttoncheckOn(val) {
     document.getElementById("buttons").ontouchstart=function(e){
-        alert(e.touches.length);
+        console.log(e.touches.length);
+        // alert(e.touches.length);
     }
     if (val.dataset.value=="ArrowLeft"||val.dataset.value=="ArrowRight") {
         buttoncheckX=val;
