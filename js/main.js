@@ -8,6 +8,7 @@ let flagY=true;
 
 let buttoncheckX;
 let buttoncheckY;
+let buttoncheckXY;
 let keycheckX;
 let keycheckY;
 let hitcheck;
@@ -21,16 +22,33 @@ window.onload=function(){
     document.getElementById("right_btn").onmouseup=function(){buttoncheckOff(this)};
     document.getElementById("up_btn").onmousedown=function(){buttoncheckOn(this)};
     document.getElementById("up_btn").onmouseup=function(){buttoncheckOff(this)};
+    document.getElementById("left_up_btn").onmousedown=function(){buttoncheckOn(this)};
+    document.getElementById("left_up_btn").onmouseup=function(){buttoncheckOff(this)};
+    document.getElementById("right_up_btn").onmousedown=function(){buttoncheckOn(this)};
+    document.getElementById("right_up_btn").onmouseup=function(){buttoncheckOff(this)};
     document.getElementById("down_btn").onmousedown=function(){buttoncheckOn(this)};
     document.getElementById("down_btn").onmouseup=function(){buttoncheckOff(this)};
+    document.getElementById("left_down_btn").onmousedown=function(){buttoncheckOn(this)};
+    document.getElementById("left_down_btn").onmouseup=function(){buttoncheckOff(this)};
+    document.getElementById("right_down_btn").onmousedown=function(){buttoncheckOn(this)};
+    document.getElementById("right_down_btn").onmouseup=function(){buttoncheckOff(this)};
     document.getElementById("left_btn").onpointerdown=function(){buttoncheckOn(this)};
     document.getElementById("left_btn").onpointerleave=function(){buttoncheckOff(this)};
     document.getElementById("right_btn").onpointerdown=function(){buttoncheckOn(this)};
     document.getElementById("right_btn").onpointerleave=function(){buttoncheckOff(this)};
     document.getElementById("up_btn").onpointerdown=function(){buttoncheckOn(this)};
     document.getElementById("up_btn").onpointerleave=function(){buttoncheckOff(this)};
+    document.getElementById("left_up_btn").onpointerdown=function(){buttoncheckOn(this)};
+    document.getElementById("left_up_btn").onpointerleave=function(){buttoncheckOff(this)};
+    document.getElementById("right_up_btn").onpointerdown=function(){buttoncheckOn(this)};
+    document.getElementById("right_up_btn").onpointerleave=function(){buttoncheckOff(this)};
     document.getElementById("down_btn").onpointerdown=function(){buttoncheckOn(this)};
     document.getElementById("down_btn").onpointerleave=function(){buttoncheckOff(this)};
+    document.getElementById("left_down_btn").onpointerdown=function(){buttoncheckOn(this)};
+    document.getElementById("left_down_btn").onpointerleave=function(){buttoncheckOff(this)};
+    document.getElementById("right_down_btn").onpointerdown=function(){buttoncheckOn(this)};
+    document.getElementById("right_down_btn").onpointerleave=function(){buttoncheckOff(this)};
+
 
     cnvs=document.getElementById("cnv");
     const ctx=cnvs.getContext("2d");
@@ -50,6 +68,7 @@ window.onload=function(){
         ctx.fillStyle="black";
         move(buttoncheckX);
         move(buttoncheckY);
+        move(buttoncheckXY);
         keymove(keycheckX);
         keymove(keycheckY);
         ctx.fillRect(data["x"],data["y"],20,20)
@@ -92,7 +111,7 @@ window.document.addEventListener('keyup', event => {
 function typekeydown(ev) {
     if (ev.key=="ArrowLeft"||ev.key=="ArrowRight") {
         keycheckX=ev.key;
-    } else {
+    } else if(ev.key=="ArrowUp"||ev.key=="ArrowDown"){
         keycheckY=ev.key;
     }
 }
@@ -136,10 +155,13 @@ function buttoncheckOn(val) {
         console.log(e.touches.length);
         // alert(e.touches.length);
     }
+    // console.log(val);
     if (val.dataset.value=="ArrowLeft"||val.dataset.value=="ArrowRight") {
         buttoncheckX=val;
-    }else{
+    }else if(val.dataset.value=="ArrowUp"||val.dataset.value=="ArrowDown"){
         buttoncheckY=val;
+    }else{
+        buttoncheckXY=val;
     }
 }
 /**
@@ -147,8 +169,13 @@ function buttoncheckOn(val) {
  * @param {*} val HTML要素 
  */
 function buttoncheckOff(val) {
-    buttoncheckX="";
-    buttoncheckY="";
+    // if (val.dataset.value=="ArrowLeft"||val.dataset.value=="ArrowRight") {
+        buttoncheckX="";
+    // }else if(val.dataset.value=="ArrowUp"||val.dataset.value=="ArrowDown"){
+        buttoncheckY="";
+    // }else{
+        buttoncheckXY="";
+    // }
 }
 /**
  * プレイヤーを動かす
@@ -185,6 +212,34 @@ function move(ele){
             break;
         case "down":
             if (data["y"]+10<=cnvs.height-20) {
+                data["y"]+=10;
+            }
+
+            break;
+        case "left_up":
+            if (data["x"]-10>=0&&data["y"]-10>=0) {
+                data["x"]-=10;
+                data["y"]-=10;
+            }
+
+            break;
+        case "right_up":
+            if (data["x"]+10<=cnvs.width-20&&data["y"]-10>=0) {
+                data["x"]+=10;
+                data["y"]-=10;
+            }
+
+            break;
+        case "left_down":
+            if (data["x"]-10>=0&&data["y"]+10<=cnvs.height-20) {
+                data["x"]-=10;
+                data["y"]+=10;
+            }
+
+            break;
+        case "right_down":
+            if (data["x"]+10<=cnvs.width-20&&data["y"]+10<=cnvs.height-20) {
+                data["x"]+=10;
                 data["y"]+=10;
             }
 
