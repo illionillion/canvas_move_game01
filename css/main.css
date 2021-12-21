@@ -21,7 +21,8 @@
 
 #countarea{
     /* float: left; */
-    text-align: center;
+    /* text-align: center; */
+    text-align: right;
     flex: 1;
     font-size: 1.2rem;
 }
@@ -33,7 +34,7 @@
 #buttons{
     /* float: right; */
     text-align: center;
-    flex: 1;
+    flex: 2;
 }
 
 #buttons input{
