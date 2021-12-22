@@ -35,6 +35,7 @@
     /* float: right; */
     text-align: center;
     flex: 2;
+    user-select: none;
 }
 
 #buttons input{
