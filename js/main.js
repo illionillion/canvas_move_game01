@@ -16,8 +16,11 @@ let keycheckY;
 let hitcheck;
 let hitcount=0;
 let game_state="init";
+
+let audioObj;
 window.onload=function(){
 
+    // audioObj=new Audio("./audio/Onmtp-Inspiration05-mp3/Onmtp-Inspiration05-1.mp3");
 
     addEvents();
 

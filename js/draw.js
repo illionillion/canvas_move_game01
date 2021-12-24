@@ -17,7 +17,7 @@ function drawing() {
         //     default:
         //         break;
         // }
-        console.log(game_state);
+        // console.log(game_state);
         if (game_state=="stop") {
             clearInterval(animationId);
         }
@@ -34,6 +34,7 @@ function drawing() {
         keymove(keycheckX);
         keymove(keycheckY);
         ctx.fillRect(Mydata["x"],Mydata["y"],20,20)
+
         const myTop    = Mydata["y"];
         const myBottom = Mydata["y"] + 20;
         const myLeft   = Mydata["x"];
@@ -52,9 +53,17 @@ function drawing() {
                 document.getElementById("countarea").innerHTML=hitcount;
                 // console.log(hitcount);
                 hitcheck=false;
+
+                //ヒット音鳴らす
+                // console.log(audioObj);
+                audioObj=new Audio("./audio/Onmtp-Inspiration05-mp3/Onmtp-Inspiration05-1.mp3");
+                audioObj.play();
             }
         }else{
             hitcheck=true;
+
+            // audioObj.pause();
+            // audioObj.currentTime=0;
         }
 
     }, 10);
