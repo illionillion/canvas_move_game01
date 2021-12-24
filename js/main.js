@@ -15,7 +15,7 @@ let keycheckX;
 let keycheckY;
 let hitcheck;
 let hitcount=0;
-
+let game_state="init";
 window.onload=function(){
 
 
@@ -29,11 +29,33 @@ window.onload=function(){
         Mydata["y"]=cnvs.height/2;
 
     }
+    drawtitle()
 
-    setInterval(() => {
+    document.getElementById("start_stop_btn").addEventListener("click",function(){
+        check_status();
+    })
 
-        drawing();
+}
+
+function check_status(val) {
+    switch (game_state) {
+        case "init":
+            game_state="play";
+            document.getElementById("start_stop_btn").value="停止";
+            drawing();
+            break;
+        case "stop":
+            game_state="play";
+            document.getElementById("start_stop_btn").value="停止";
+            drawing();
+            break;
+        case "play":
+            game_state="stop";
+            document.getElementById("start_stop_btn").value="開始";
+            break;
     
-    }, 10);
+        default:
+            break;
+    }
 
 }

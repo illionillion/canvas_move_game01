@@ -3,10 +3,13 @@
 * @param {*} ev キーボード 
 */
 function typekeydown(ev) {
+    // console.log(ev.key);
     if (ev.key=="ArrowLeft"||ev.key=="ArrowRight") {
         keycheckX=ev.key;
     } else if(ev.key=="ArrowUp"||ev.key=="ArrowDown"){
         keycheckY=ev.key;
+    }else if(ev.key=="Enter"){
+        check_status();
     }
 }
 /**
