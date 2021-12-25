@@ -55,6 +55,7 @@ function check_status(val) {
         case "play":
             game_state="stop";
             document.getElementById("start_stop_btn").value="開始";
+            drawpause();
             break;
     
         default:

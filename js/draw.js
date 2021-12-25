@@ -2,24 +2,21 @@
  * 描画処理
  */
 function drawing() {
+    // ゲーム開始音
+    let hiteffect=new Audio("./audio/Onmtp-Inspiration05-mp3/Onmtp-Inspiration05-3.mp3");
+                hiteffect.play();
+                hiteffect=null;
     let animationId= setInterval(() => {
-        // switch (game_state) {
-        //     case "init":;
-        //         drawtitle()
-        //         break;
-        //     case "stop":
 
-        //         break;
-        //     case "play":
-        //         drawing();
-        //         break;
-        
-        //     default:
-        //         break;
-        // }
         // console.log(game_state);
         if (game_state=="stop") {
             clearInterval(animationId);
+            drawpause();
+            // 一時停止音
+            let hiteffect=new Audio("./audio/Onmtp-Inspiration05-mp3/Onmtp-Inspiration05-2.mp3");
+                hiteffect.play();
+                hiteffect=null;
+            return;
         }
 
         ctx.clearRect(0, 0, cnvs.width, cnvs.height);
@@ -34,6 +31,13 @@ function drawing() {
         keymove(keycheckX);
         keymove(keycheckY);
         ctx.fillRect(Mydata["x"],Mydata["y"],20,20)
+
+        ctx.font = '16px serif';
+        ctx.fillStyle = '#404040';
+        //文字の配置を指定（左上基準にしたければtop/leftだが、文字の中心座標を指定するのでcenter
+        // ctx.textBaseline = 'center';
+        ctx.textAlign = 'center';
+        ctx.fillText("ヒット数："+hitcount,60,20);
 
         const myTop    = Mydata["y"];
         const myBottom = Mydata["y"] + 20;
@@ -50,14 +54,16 @@ function drawing() {
                 // alert("good");
                 // console.log("hit");
                 hitcount++;
-                document.getElementById("countarea").innerHTML=hitcount;
+                // document.getElementById("countarea").innerHTML=hitcount;
+                
                 // console.log(hitcount);
                 hitcheck=false;
 
                 //ヒット音鳴らす
                 // console.log(audioObj);
-                audioObj=new Audio("./audio/Onmtp-Inspiration05-mp3/Onmtp-Inspiration05-1.mp3");
-                audioObj.play();
+                let hiteffect=new Audio("./audio/Onmtp-Inspiration05-mp3/Onmtp-Inspiration05-1.mp3");
+                hiteffect.play();
+                hiteffect=null;
             }
         }else{
             hitcheck=true;
@@ -82,4 +88,14 @@ function drawtitle() {
     ctx.fillText("ゲーム",cnvs.width/2,cnvs.height/2);
     ctx.fillText("Enterか開始ボタンで開始・停止",cnvs.width/2,cnvs.height/2+40);
     ctx.fillText("矢印キーかボタンタッチで移動",cnvs.width/2,cnvs.height/2+80);
+}
+
+function drawpause() {
+    //文字のスタイルを指定
+	ctx.font = '32px serif';
+	ctx.fillStyle = '#404040';
+	//文字の配置を指定（左上基準にしたければtop/leftだが、文字の中心座標を指定するのでcenter
+	ctx.textBaseline = 'center';
+	ctx.textAlign = 'center';
+    ctx.fillText("PAUSE",cnvs.width/2,cnvs.height/2);
 }
