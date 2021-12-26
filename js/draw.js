@@ -32,12 +32,13 @@ function drawing() {
         keymove(keycheckY);
         ctx.fillRect(Mydata["x"],Mydata["y"],20,20)
 
-        ctx.font = '16px serif';
+        //ヒットポイント描画
+        ctx.font = '28px serif';
         ctx.fillStyle = '#404040';
         //文字の配置を指定（左上基準にしたければtop/leftだが、文字の中心座標を指定するのでcenter
         // ctx.textBaseline = 'center';
         ctx.textAlign = 'center';
-        ctx.fillText("ヒット数："+hitcount,60,20);
+        ctx.fillText("ヒット数："+hitcount,85,30);
 
         const myTop    = Mydata["y"];
         const myBottom = Mydata["y"] + 20;
